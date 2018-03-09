@@ -1,5 +1,8 @@
 **欢迎大家加群讨论**
-点击链接加入群[ReactNative-解决问题交流群](https://jq.qq.com/?_wv=1027&k=4EZwdSd) :644124441
+点击链接加入群[ReactNative-解决问题交流群(此群已满请加群2)](https://jq.qq.com/?_wv=1027&k=4EZwdSd) :644124441
+
+点击链接加入群[ReactNative技术交流群2](https://jq.qq.com/?_wv=1027&k=55Dujm4)  :687663534
+
 # ReactNative-Error-Warning
 注：本文是我在开发过程中遇到问题[{持续更新看过来}解决方法的总结](http://www.jianshu.com/p/98c8f2a970eb)，之后会持续更新，希望帮助到更多的学习者。文中有不妥的地方希望指出共同学习，同时欢迎大神补充。（之后我会放出自己开发整理的笔记和demo）欢迎持续喜欢关注。
 
