@@ -1,11 +1,21 @@
 **欢迎大家加群讨论**
 
+
+![image.png](https://upload-images.jianshu.io/upload_images/436736-48e6e32fecc2095d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# ReactNative-Error-Warning
+注：本文是我在开发过程中遇到问题[解决方法的总结](https://github.com/HAPENLY/ReactNative-Error-Warning)，之后会持续更新，希望帮助到更多的学习者。文中有不妥的地方希望指出共同学习，同时欢迎大神补充。（之后我会放出自己开发整理的笔记和[GithubDemo地址,欢迎 star](https://github.com/HAPENLY/ReactNative-Source-code-Demo)）欢迎持续喜欢关注 star。  
+遇到问题的可以来这个群里交流: `1085660877 ` 欢迎对 ReactNative 开发感兴趣的朋友加入!   1085660877
+
+这是第二次发，之前的文章被消失了
+
+**欢迎大家加群讨论**
+
 点击链接加入群[ReactNative-解决问题交流群](https://jq.qq.com/?_wv=1027&k=4EZwdSd) :644124441
 
 点击链接加入群[ReactNative技术交流群2](https://jq.qq.com/?_wv=1027&k=55Dujm4)  :687663534
 
-# ReactNative-Error-Warning
-注：本文是我在开发过程中遇到问题[{持续更新看过来}解决方法的总结](http://www.jianshu.com/p/98c8f2a970eb)，之后会持续更新，希望帮助到更多的学习者。文中有不妥的地方希望指出共同学习，同时欢迎大神补充。（之后我会放出自己开发整理的笔记和demo）欢迎持续喜欢关注。
+[点击链接加入群聊【ReactNative技术交流群3】：](https://jq.qq.com/?_wv=1027&k=5ziQ7I1)1085660877
 
 ## 错误1：
 
@@ -378,3 +388,279 @@ Use of undeclared identifier '_refreshControl'; did you mean 'refreshControl'?
 ```
 <Text  key={0} style={{ position:'absolute', width:imgwidth,height:imgheight,top:64+Y,left:X,fontSize:parseInt(layoutData.fontsize)}}>{texts}</Text>
  ```
+
+## 错误 27：Warning: Failed prop type: Invalid prop `source` supplied to `RCTImageView`  OR
+ExceptionsManager.js:71 Warning: Failed prop type: Invalid prop `source` supplied to `Image`.
+
+![image.png](http://upload-images.jianshu.io/upload_images/436736-e5cfe81503eafb04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+解决：这个错误的原因是你给Image 的Source 有问题 比如不是一个URI ，查看一下不是不传入了一个对象像这样。
+![image.png](http://upload-images.jianshu.io/upload_images/436736-8320dd9e428ca7e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+## 错误28：
+```
+RN iOS 0.45以上版本开始需要依赖一些第三方编译库，这些库在国内下载都非常困难（一般的翻墙工具都很难下载）未来RN不同版本可能依赖不同版本的第三方编译库，具体所需库和版本请查看[ios-install-third-party.sh](https://github.com/facebook/react-native/blob/master/scripts/ios-install-third-party.sh)文件，注意先把左上角的branch切换到对应的版本
+boost/iterator/iterator_adaptor.hpp' file not found
+```
+[解决参考](http://reactnative.cn/blog.html)
+
+## 错误29 Android 项目启动报这个错误:`Could not connect to development server`
+首先检查包服务器是否运行正常。
+       在项目文件夹下输入react-native start或者npm start均可开启服务器，但是我们需要在PC端确认包服务器是否运行正常。
+![image.png](http://upload-images.jianshu.io/upload_images/436736-1e2e20e8b0deea60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+解决: 1.手机摇一摇进入到Developer Menu  如图:
+![5E8F32EC-5199-4140-A1B8-826E2A206DBA.png](http://upload-images.jianshu.io/upload_images/436736-b50d77e64a4f7e21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+2.选择 Dev Settings 如图:
+
+![image.png](http://upload-images.jianshu.io/upload_images/436736-dc0ac760f1be0212.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+3.填写 你的服务 IP 记得端口为:8081
+![image.png](http://upload-images.jianshu.io/upload_images/436736-bcc7fc453ed9ac6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+ 
+4.点击确定之后重新启动项目, reload 搞定
+
+## 30 错误
+```
+TransformError: /Users/xxxxt/index.ios.js: Unexpected token ) (While processing preset: \"/Users/xxx/node_modules/babel-preset-react-native/index.js\")"
+```
+
+![image.png](http://upload-images.jianshu.io/upload_images/436736-f023ed5d0ee9d109.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+解决方法:
+```
+yarn remove babel-preset-react-native
+yarn add babel-preset-react-native@2.1.0
+```
+## 31 `unrecognized font family material icons`
+
+解决方法:
+1.Close the running packager
+2.Run `react-native link react-native-vector-icons`
+3.Then run `react-native start --reset-cache`
+4.Finally run `react-native run-ios` to restart the simulator
+
+## 32 
+`undefined is not an object (evaluating NativeModuels.UIManager.RCTVideo.Constants')
+`
+![image.png](http://upload-images.jianshu.io/upload_images/436736-e9720f2cc714794b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+依次执行:
+ 1.`npm i -S react-native-video`
+2.`react-native link `
+3.`然后重启模拟器试(也可以把应用从模拟器删除clean 之后重新 run)试我是这样好的`
+[可参考issues](https://github.com/react-native-community/react-native-video/issues/272)
+## 33 如果uninstall 第三方库之后然后 install xcode 报错`linker command failed with exit code 1 (use -v to see invocation) `
+解决方法:
+
+
+![image.png](http://upload-images.jianshu.io/upload_images/436736-505d451ba08654f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+```
+1.别慌
+2.检查一下是不是 install 的时候没有删除module 直接 install 导致的多了或者少了.a文件,我的是这样解决的.
+```
+## 34 `underfined is not an object(evaluating 'viewproptypes.style')`
+
+![image.png](http://upload-images.jianshu.io/upload_images/436736-5104a80293cc9317.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+解决方法:一.
+```
+https://github.com/facebook/react-native/issues/14032
+看完之后，解决了问题。
+解决方式如下：
+找到node_modules目录下的react-native-scrollable-tab-view，将所有js文件中有
+ViewPropTypes.style 改为 View.propTypes.style
+```
+解决方法二.对于旧项目 三方库较多不好修改
+```
+就是新建一个项目,然后把组件放到新项目中.重新 yarn add 一下你所有的库.  
+如果你只改 RN 版本可能会有其他组件版本跟不上.这样就确保都是最新的版本了
+这个方法我已经验证过可以的
+```
+## 35 : 旧项目升级到RN 0.47.1 + 之后出现这个问题
+```
+Navigator is deprecated and has been removed from this package. It can now be installed ' +
+'and imported from `react-native-deprecated-custom-components` instead of `react-native`. ' +
+'Learn about alternative navigation solutions at http://facebook.github.io/react-native/docs/navigation.html'
+```
+![image.png](http://upload-images.jianshu.io/upload_images/436736-e2439d8115e52904.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+解决:
+1.根据提示:
+![image.png](http://upload-images.jianshu.io/upload_images/436736-bb3a4107684f0c26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+2.找到对应` JS `文件找到并删除:
+![image.png](http://upload-images.jianshu.io/upload_images/436736-70a70f41196b81c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+3.添加:`import {Navigator} from 'react-native-deprecated-custom-components'`
+4安装 `yarn add react-native-deprecated-custom-components`
+5.run 就搞定了
+
+## 36: props的使用以及propTypes填坑`undefined is not an object (evaluating '_react2.PropTypes.string')`(群友:@Dennis  [提供参考连接](http://www.mamicode.com/info-detail-2017422.html)) 错误详情如图:![image.png](http://upload-images.jianshu.io/upload_images/436736-134dac724d3bbe76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](http://upload-images.jianshu.io/upload_images/436736-ced41c1af3707a76.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 37 : `No bundle URL present.`
+
+![image.png](http://upload-images.jianshu.io/upload_images/436736-95462223b530d595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+解决方法:
+首先:
+```
+npm install
+react-native run-ios
+```
+然后看看你是否开着`Shadowsocks,VPN `之类的.关掉重新 `Run` 试试 
+![image.png](http://upload-images.jianshu.io/upload_images/436736-a0d3a672e4b766dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 38:` Redefinition of 'RCTMethodInfo'`
+![image.png](http://upload-images.jianshu.io/upload_images/436736-84e3d7246a76be14.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+如果你使用的是最新的 RN 版本.建议切换为目前相对稳点的0.47.2版本
+[解决方案参考 issues](https://github.com/facebook/react-native/issues/15775)
+[解决方案参考 issues](https://github.com/facebook/react-native/issues/15762)
+
+## 39 react-native 低版本升级到0.49以上版本时遇到
+```
+Script-00DD1BFF1BD5951E006B06BC.sh: line 3: ../node_modules/react-native/packager/react-native-xcode.sh: No such file or directory
+```
+解决方法:
+1.打开 `Xcode Build Phases > Bundle React Native code and images`
+2修改`export NODE_BINARY=node
+../node_modules/react-native/packager/react-native-xcode.sh` 为` export NODE_BINARY=node
+../node_modules/react-native/scripts/react-native-xcode.sh`
+
+## 40 当使用 State 报错
+`undefined is not an object evaluating this.state.`
+![image.png](http://upload-images.jianshu.io/upload_images/436736-ca5eb06bb3e61509.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+方法一:
+在方法调用的时候添加`.bind(this)` 如![image.png](http://upload-images.jianshu.io/upload_images/436736-cc40670940900b69.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+方法二:在构造函数中添加绑定
+![image.png](http://upload-images.jianshu.io/upload_images/436736-76052805147af881.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+方法三: 或者使用箭头函数.`()=>{}`
+方法有很常用的这几种
+
+## 41 如果你频繁出现这个错误,
+ `nvariant Violation: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
+`
+同时出现这个警告:` Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
+`  
+![image.png](http://upload-images.jianshu.io/upload_images/436736-1a7fd004e809af7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+解决方法:
+一.是查看导入的工具类是否
+`var xxxx = require('../Utils/ZPxxxx'); `这样加入的, 如果是你那就傻逼了改成这样试试` import xxxx from '../Utils/ZPxxxx';`  
+同时警告是因为:你在一个被卸载的组件里调用setState方法.检查一下生命周期一般没啥影响
+
+感谢群友@勿念  丫头 提醒我这里在详细解释一下
+导出单个类:
+```
+在ES5里，要导出一个类给别的模块用，一般通过module.exports来导出
+
+//ES5
+var ZPxxxx = React.createClass({
+    ...
+});
+module.exports = ZPxxxx;
+在ES6里，通常用export default来实现相同的功能：
+
+//ES6
+export default class ZPxxxx extends React.Component{
+    ...
+}
+引用的时候也类似：
+
+//ES5
+var ZPxxxx = require('./ZPxxxx.js');
+
+//ES6
+import ZPxxxx from './ZPxxxx.js';
+
+```
+## 42 如果你在跳转页面的时候经常遇到`undefined is not an object (evaluating 'this.props.navigation.navigate')`  
+![image.png](http://upload-images.jianshu.io/upload_images/436736-2056d93ac3d77180.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+解决方法见 [GitHub issues](https://github.com/react-navigation/react-navigation/issues/1569) 这里面有详细的解释和介绍@matthamil解释很到位!
+react-Navigation使用详解:
+[Screen-Navigation-Prop](https://reactnavigation.org/docs/navigators/navigation-prop#Screen-Navigation-Prop)
+
+## 43项目 Run的时候经常报:` Failed to load bundle(http://localhost:8081/index.bundle?platform=ios&dev=true&minify=false) with error:(Could not connect to development server.  Ensure the following: - Node server is running and available on the same network - run 'npm start' from react-native root - Node server URL is correctly set in AppDelegate - WiFi is enabled and connected to the same network as the Node Server`  
+解决方法
+1: 启动项目的服务:`react-native start   `或者`npm start`;然后早 `Com+R`;
+2:上面的方法没有解决,而且长时间不能启动还报以上错误: 
+在 `xcode ->build phases -> bundle react-native code and image `->添加
+`export DISABLE_XIP=NOTHANKS`或者:`export DISABLE_XIP=true`
+![image.png](http://upload-images.jianshu.io/upload_images/436736-97476f7b0a9fbfe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+原因详细介绍见 [GitHub issue](https://github.com/facebook/react-native/issues/12786) 
+
+解决方法二: `sudo react-native start  ` 输入密码 `run`  
+========================================================
+
+## 44 优化打包速度(真机运行速度)
+#### 原因
+就是`react-native-xcode.sh`. 每次打包安装都重新把RN文件打包成`main.jsbundle`, 在机械硬盘的渣渣电脑上操作那数以万计个的文件,所以会很慢
+####解决:
+找到:![image.png](https://upload-images.jianshu.io/upload_images/436736-0279b9a9a838e463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+这个脚本`react-native-xcode.sh`在最头上加上
+```
+if [ "$CONFIGURATION" = "Debug" ]; then
+  echo "--- Skip bundle building in 'Debug' mode"
+  exit 0
+fi
+```
+或者:
+```
+DEST=$CONFIGURATION_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH
+
+if [ "$CONFIGURATION" = "Debug" ] && [ -f "$DEST/main.jsbundle" ]; then
+  echo "--- Skip bundle building in 'Debug' mode"
+  exit 0
+fi
+```
+这样真机测试的手安装就会快了.
+#####注意 :如果你是打包需要注意修改代码后
+,需要Command+Shift+K清除工程缓存, 重新Build, 生成新的main.jsbundle.
+
+## 45 如果你执行 `react-native init AwesomeProject ` 报错
+```
+info No lockfile found.
+[1/4] 🔍  Resolving packages...
+warning react-native > fbjs-scripts > gulp-util@3.0.8: gulp-util is deprecated - replace it, following the guidelines at https://medium.com/gulpjs/gulp-util-ca3b1f9f9ac5
+error An unexpected error occurred: "Couldn't find package \"esutils@^2.0.2\" required by \"babel-code-frame@^6.26.0\" on the \"npm\" registry.".
+...
+...
+ stderr: null,
+  stdout: null,
+  pid: 26012,
+  output: [ null, null, null ],
+  signal: null,
+  status: 1 }
+Command `yarn add react-native --exact` failed.
+
+```
+解决方法: `npm config set registry https://registry.npmjs.org` 
+如果下载过慢就用这个`npm config set registry https://registry.npm.taobao.org`
+
+## 46 警告 使用 sectionlist 遇到
+ ```
+ Warning: Failed child context type: Invalid child context `virtualizedCell.cellKey` of type `number` supplied to `CellRenderer`, expected `string`.
+```
+![image.png](https://upload-images.jianshu.io/upload_images/436736-f1c3744301c62add.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+消除方法:`keyExtractor={(item, index) => index.toString()}`
+##47 Android 项目 run 遇到 `React Native Version Mismatch`
+Javascript version 0.54.4和 native 0.55.4 版本不一致   :
+解决方法如下：
+
+进入：android/app/build.gradle文件，找到dependencies代码块，添加 这里要和你 Javascript 版本一致
+```
+dependencies {
+    compile ("com.facebook.react:react-native:0.54.4") { force = true } 
+}
+```
+## 48 项目运行遇到:
+ `No component found for view with name "ARTShape"`
+` No component found for view with name "ARTSurfaceView"`
+
+解决方法是:
+1).xcode中打开ios项目，选中‘Libraries’目录—> 右键选择‘Add Files to 项目名称’ —> ‘node_modules/react-native/Libraries/ART/ART.xcodeproj’ 添加；
+2).选中项目根目录 —> 点击’Build Phases‘ —> 点击‘Link Binary With Libraries’ —> 点击左下方‘+’ —> 选中‘libART.a’添加。
+
+## 49 如果真机运行出现
+`Showing All Messages
+error: File xx/BuildProductsPath/Release-iphoneos/xx/main.jsbundle does not exist. This must be a bug with`
+
+解决方法:(建一个就好了)
+`sudo react-native bundle --entry-file index.js --bundle-output ./ios/main.jsbundle --platform ios --assets-dest ./ios --dev false`
